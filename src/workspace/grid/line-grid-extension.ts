@@ -4,8 +4,8 @@ import { LineGrid } from './line-grid';
 import { LineGridConfiguration } from './line-grid-configuration';
 
 const defaultConfiguration: LineGridConfiguration = {
-	gridSizeX: 48,
-	gridSizeY: 48
+	gridSizeX: 68,
+	gridSizeY: 68
 };
 
 export class LineGridExtension implements GridExtension {

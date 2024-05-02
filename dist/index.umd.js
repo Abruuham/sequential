@@ -4325,8 +4325,8 @@
 	}
 
 	const defaultConfiguration = {
-	    gridSizeX: 48,
-	    gridSizeY: 48
+	    gridSizeX: 68,
+	    gridSizeY: 68
 	};
 	class LineGridExtension {
 	    static create(configuration) {
