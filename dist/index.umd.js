@@ -4319,7 +4319,7 @@
 	    }
 	    setScale(_, scaledSize) {
 	        Dom.attrs(this.element, {
-	            d: `M ${scaledSize.x} 0 L 0 0 0 ${scaledSize.y}`
+	            d: `M 78 0 L 0 0 0 78`
 	        });
 	    }
 	}
