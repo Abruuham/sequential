@@ -2707,7 +2707,7 @@
 	OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 	PERFORMANCE OF THIS SOFTWARE.
 	***************************************************************************** */
-	/* global Reflect, Promise */
+	/* global Reflect, Promise, SuppressedError, Symbol */
 
 
 	function __awaiter(thisArg, _arguments, P, generator) {
@@ -2719,6 +2719,11 @@
 	        step((generator = generator.apply(thisArg, _arguments || [])).next());
 	    });
 	}
+
+	typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
+	    var e = new Error(message);
+	    return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
+	};
 
 	function isElementAttached(element) {
 	    return !(document.compareDocumentPosition(element) & Node.DOCUMENT_POSITION_DISCONNECTED);

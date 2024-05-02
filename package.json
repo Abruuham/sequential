@@ -42,7 +42,11 @@
 		"name": "NoCode JS",
 		"url": "https://nocode-js.com/"
 	},
-	"contributors": [{"name": "Abraham Calvillo"}],
+	"contributors": [
+		{
+			"name": "Abraham Calvillo"
+		}
+	],
 	"homepage": "https://nocode-js.com/",
 	"license": "MIT",
 	"repository": {
@@ -93,8 +97,8 @@
 		"rollup": "^3.18.0",
 		"rollup-plugin-dts": "^5.2.0",
 		"rollup-plugin-typescript2": "^0.34.1",
-		"typescript": "^4.9.5",
-		"sass": "^1.66.1"
+		"sass": "^1.76.0",
+		"typescript": "^4.9.5"
 	},
 	"keywords": [
 		"workflow",
