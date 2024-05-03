@@ -34,7 +34,7 @@ export class Icons {
 
 	public static appendPath(parent: SVGElement, pathClassName: string, d: string, size: number): SVGGElement {
 		const g = Dom.svg('g');
-		const scale = size / 68;
+		const scale = size / 48;
 		const path = Dom.svg('path', {
 			d,
 			class: pathClassName,
@@ -48,7 +48,7 @@ export class Icons {
 	public static createSvg(className: string, d: string): SVGElement {
 		const icon = Dom.svg('svg', {
 			class: className,
-			viewBox: '0 0 68 68'
+			viewBox: '0 0 48 48'
 		});
 		const path = Dom.svg('path', {
 			d,

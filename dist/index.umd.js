@@ -42,7 +42,7 @@
 	class Icons {
 	    static appendPath(parent, pathClassName, d, size) {
 	        const g = Dom.svg('g');
-	        const scale = size / 68;
+	        const scale = size / 48;
 	        const path = Dom.svg('path', {
 	            d,
 	            class: pathClassName,
@@ -55,7 +55,7 @@
 	    static createSvg(className, d) {
 	        const icon = Dom.svg('svg', {
 	            class: className,
-	            viewBox: '0 0 68 68'
+	            viewBox: '0 0 48 48'
 	        });
 	        const path = Dom.svg('path', {
 	            d,
@@ -4319,7 +4319,7 @@
 	    }
 	    setScale(_, scaledSize) {
 	        Dom.attrs(this.element, {
-	            d: `M 78 0 L 0 0 0 78`
+	            d: `M ${scaledSize.x} 0 L 0 0 0 ${scaledSize.y}`
 	        });
 	    }
 	}

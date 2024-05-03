@@ -16,7 +16,7 @@ export class LineGrid implements Grid {
 
 	public setScale(_: number, scaledSize: Vector) {
 		Dom.attrs(this.element, {
-			d: `M 78 0 L 0 0 0 78`
+			d: `M ${scaledSize.x} 0 L 0 0 0 ${scaledSize.y}`
 		});
 	}
 }
