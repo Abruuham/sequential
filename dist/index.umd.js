@@ -4425,7 +4425,7 @@
 	    }
 	    constructor(configuration) {
 	        this.configuration = configuration;
-	        this.componentType = 'task';
+	        this.componentType = 'icon';
 	        this.createComponentView = createIconStepComponentViewFactory(false, this.configuration.view);
 	    }
 	}

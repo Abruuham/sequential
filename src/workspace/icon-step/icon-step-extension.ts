@@ -22,7 +22,7 @@ export class IconStepExtension implements StepExtension<Step> {
 		return new IconStepExtension(configuration ?? defaultConfiguration);
 	}
 
-	public readonly componentType = 'task';
+	public readonly componentType = 'icon';
 
 	private constructor(private readonly configuration: IconStepExtensionConfiguration) {}
 
