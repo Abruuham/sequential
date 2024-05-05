@@ -18,6 +18,7 @@ import { findValidationBadgeIndex } from './workspace/badges/find-validation-bad
 import { DefaultSequenceComponentExtension } from './workspace/sequence/default-sequence-component-extension';
 import { DefaultStepComponentViewWrapperExtension } from './workspace/default-step-component-view-wrapper-extension';
 import { LineGridExtension } from './workspace/grid/line-grid-extension';
+import { IconStepExtension } from './workspace/icon-step/icon-step-extension';
 
 export type Services = Required<DesignerExtension>;
 
@@ -84,6 +85,7 @@ function setDefaults(services: Partial<Services>, configuration: DesignerConfigu
 	services.steps.push(ContainerStepExtension.create());
 	services.steps.push(SwitchStepExtension.create());
 	services.steps.push(TaskStepExtension.create());
+	services.steps.push(IconStepExtension.create());
 
 	if (!services.stepComponentViewWrapper) {
 		services.stepComponentViewWrapper = new DefaultStepComponentViewWrapperExtension();

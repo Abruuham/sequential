@@ -4406,6 +4406,30 @@
 	    }
 	}
 
+	const defaultConfiguration = {
+	    view: {
+	        paddingLeft: 12,
+	        paddingRight: 12,
+	        paddingY: 10,
+	        textMarginLeft: 12,
+	        minTextWidth: 70,
+	        iconSize: 22,
+	        radius: 5,
+	        inputSize: 14,
+	        outputSize: 10
+	    }
+	};
+	class IconStepExtension {
+	    static create(configuration) {
+	        return new IconStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration);
+	    }
+	    constructor(configuration) {
+	        this.configuration = configuration;
+	        this.componentType = 'task';
+	        this.createComponentView = createIconStepComponentViewFactory(false, this.configuration.view);
+	    }
+	}
+
 	class ServicesResolver {
 	    static resolve(extensions, configuration) {
 	        const services = {};
@@ -4467,6 +4491,7 @@
 	    services.steps.push(ContainerStepExtension.create());
 	    services.steps.push(SwitchStepExtension.create());
 	    services.steps.push(TaskStepExtension.create());
+	    services.steps.push(IconStepExtension.create());
 	    if (!services.stepComponentViewWrapper) {
 	        services.stepComponentViewWrapper = new DefaultStepComponentViewWrapperExtension();
 	    }
@@ -4756,30 +4781,6 @@
 	    }
 	    constructor(grid) {
 	        this.grid = grid;
-	    }
-	}
-
-	const defaultConfiguration = {
-	    view: {
-	        paddingLeft: 12,
-	        paddingRight: 12,
-	        paddingY: 10,
-	        textMarginLeft: 12,
-	        minTextWidth: 70,
-	        iconSize: 22,
-	        radius: 5,
-	        inputSize: 14,
-	        outputSize: 10
-	    }
-	};
-	class IconStepExtension {
-	    static create(configuration) {
-	        return new IconStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration);
-	    }
-	    constructor(configuration) {
-	        this.configuration = configuration;
-	        this.componentType = 'task';
-	        this.createComponentView = createIconStepComponentViewFactory(false, this.configuration.view);
 	    }
 	}
 
