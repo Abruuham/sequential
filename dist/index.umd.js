@@ -1117,7 +1117,7 @@
 	    }
 	}
 
-	const defaultConfiguration$5 = {
+	const defaultConfiguration$6 = {
 	    view: {
 	        size: 22,
 	        iconSize: 12
@@ -1125,7 +1125,7 @@
 	};
 	class ValidationErrorBadgeExtension {
 	    static create(configuration) {
-	        return new ValidationErrorBadgeExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$5);
+	        return new ValidationErrorBadgeExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$6);
 	    }
 	    constructor(configuration) {
 	        this.configuration = configuration;
@@ -1731,6 +1731,71 @@
 	        },
 	        setIsSelected(isSelected) {
 	            Dom.toggleClass(rect, isSelected, 'sqd-selected');
+	        }
+	    };
+	};
+
+	const createIconStepComponentViewFactory = (isInterrupted, cfg) => (parentElement, stepContext, viewContext) => {
+	    const { step } = stepContext;
+	    const g = Dom.svg('g', {
+	        class: `sqd-step-icon sqd-type-${step.type}`
+	    });
+	    parentElement.appendChild(g);
+	    let cx, cy, r;
+	    cx = cy = r = cfg.paddingY * 2 + cfg.iconSize;
+	    const circle = Dom.svg('circle', {
+	        class: 'sqd-step-icon-circle',
+	        cx: cx,
+	        cy: cy,
+	        r: r
+	    });
+	    g.insertBefore(circle, null);
+	    const iconUrl = viewContext.getStepIconUrl();
+	    const icon = iconUrl
+	        ? Dom.svg('image', {
+	            href: iconUrl
+	        })
+	        : Dom.svg('rect', {
+	            class: 'sqd-step-icon-empty-icon',
+	            rx: cfg.radius,
+	            ry: cfg.radius
+	        });
+	    Dom.attrs(icon, {
+	        x: cfg.paddingLeft,
+	        y: cfg.paddingY,
+	        width: cfg.iconSize,
+	        heigh: cfg.iconSize
+	    });
+	    g.appendChild(icon);
+	    const isInputViewHidden = stepContext.depth === 0 && stepContext.position === 0 && !stepContext.isInputConnected;
+	    const isOutputViewHidden = isInterrupted;
+	    const inputView = isInputViewHidden ? null : InputView.createRoundInput(g, cx / 2, 0, cfg.inputSize);
+	    const outputView = isOutputViewHidden ? null : OutputView.create(g, cx / 2, cy, cfg.outputSize);
+	    return {
+	        g,
+	        width: cx,
+	        height: cy,
+	        joinX: cx / 2,
+	        sequenceComponents: null,
+	        placeholders: null,
+	        hasOutput() {
+	            return !!outputView;
+	        },
+	        getClientPosition() {
+	            return getAbsolutePosition(circle);
+	        },
+	        resolveClick(click) {
+	            return g.contains(click.element) ? true : null;
+	        },
+	        setIsDragging(isDragging) {
+	            inputView === null || inputView === void 0 ? void 0 : inputView.setIsHidden(isDragging);
+	            outputView === null || outputView === void 0 ? void 0 : outputView.setIsHidden(isDragging);
+	        },
+	        setIsDisabled(isDisabled) {
+	            Dom.toggleClass(g, isDisabled, 'sqd-disabled');
+	        },
+	        setIsSelected(isSelected) {
+	            Dom.toggleClass(circle, isSelected, 'sqd-selected');
 	        }
 	    };
 	};
@@ -4070,7 +4135,7 @@
 	    }
 	}
 
-	const defaultConfiguration$4 = {
+	const defaultConfiguration$5 = {
 	    view: {
 	        paddingTop: 20,
 	        paddingX: 20,
@@ -4086,7 +4151,7 @@
 	};
 	class ContainerStepExtension {
 	    static create(configuration) {
-	        return new ContainerStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$4);
+	        return new ContainerStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$5);
 	    }
 	    constructor(configuration) {
 	        this.configuration = configuration;
@@ -4103,7 +4168,7 @@
 	    }
 	}
 
-	const defaultConfiguration$3 = {
+	const defaultConfiguration$4 = {
 	    gapWidth: 100,
 	    gapHeight: 24,
 	    radius: 6,
@@ -4111,7 +4176,7 @@
 	};
 	class RectPlaceholderExtension {
 	    static create(configuration) {
-	        return new RectPlaceholderExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$3);
+	        return new RectPlaceholderExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$4);
 	    }
 	    constructor(configuration) {
 	        this.configuration = configuration;
@@ -4234,7 +4299,7 @@
 	    }
 	}
 
-	const defaultConfiguration$2 = {
+	const defaultConfiguration$3 = {
 	    view: {
 	        minContainerWidth: 40,
 	        paddingX: 20,
@@ -4258,7 +4323,7 @@
 	};
 	class SwitchStepExtension {
 	    static create(configuration) {
-	        return new SwitchStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$2);
+	        return new SwitchStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$3);
 	    }
 	    constructor(configuration) {
 	        this.configuration = configuration;
@@ -4267,7 +4332,7 @@
 	    }
 	}
 
-	const defaultConfiguration$1 = {
+	const defaultConfiguration$2 = {
 	    view: {
 	        paddingLeft: 12,
 	        paddingRight: 12,
@@ -4282,7 +4347,7 @@
 	};
 	class TaskStepExtension {
 	    static create(configuration) {
-	        return new TaskStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$1);
+	        return new TaskStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$2);
 	    }
 	    constructor(configuration) {
 	        this.configuration = configuration;
@@ -4324,13 +4389,13 @@
 	    }
 	}
 
-	const defaultConfiguration = {
+	const defaultConfiguration$1 = {
 	    gridSizeX: 68,
 	    gridSizeY: 68
 	};
 	class LineGridExtension {
 	    static create(configuration) {
-	        return new LineGridExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration);
+	        return new LineGridExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$1);
 	    }
 	    constructor(configuration) {
 	        this.configuration = configuration;
@@ -4694,6 +4759,30 @@
 	    }
 	}
 
+	const defaultConfiguration = {
+	    view: {
+	        paddingLeft: 12,
+	        paddingRight: 12,
+	        paddingY: 10,
+	        textMarginLeft: 12,
+	        minTextWidth: 70,
+	        iconSize: 22,
+	        radius: 5,
+	        inputSize: 14,
+	        outputSize: 10
+	    }
+	};
+	class IconStepExtension {
+	    static create(configuration) {
+	        return new IconStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration);
+	    }
+	    constructor(configuration) {
+	        this.configuration = configuration;
+	        this.componentType = 'task';
+	        this.createComponentView = createIconStepComponentViewFactory(false, this.configuration.view);
+	    }
+	}
+
 	class StepsDesignerExtension {
 	    static create(configuration) {
 	        const steps = [];
@@ -4705,6 +4794,9 @@
 	        }
 	        if (configuration.task) {
 	            steps.push(TaskStepExtension.create(configuration.task));
+	        }
+	        if (configuration.icon) {
+	            steps.push(IconStepExtension.create(configuration.icon));
 	        }
 	        return new StepsDesignerExtension(steps);
 	    }
@@ -4754,6 +4846,7 @@
 	exports.Vector = Vector;
 	exports.WorkspaceApi = WorkspaceApi;
 	exports.createContainerStepComponentViewFactory = createContainerStepComponentViewFactory;
+	exports.createIconStepComponentViewFactory = createIconStepComponentViewFactory;
 	exports.createSwitchStepComponentViewFactory = createSwitchStepComponentViewFactory;
 	exports.createTaskStepComponentViewFactory = createTaskStepComponentViewFactory;
 	exports.getAbsolutePosition = getAbsolutePosition;

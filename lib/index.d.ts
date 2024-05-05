@@ -643,6 +643,24 @@ interface TaskStepExtensionConfiguration {
     view: TaskStepComponentViewConfiguration;
 }
 
+interface IconStepComponentViewConfiguration {
+    paddingLeft: number;
+    paddingRight: number;
+    paddingY: number;
+    textMarginLeft: number;
+    minTextWidth: number;
+    iconSize: number;
+    radius: number;
+    inputSize: number;
+    outputSize: number;
+}
+
+declare const createIconStepComponentViewFactory: (isInterrupted: boolean, cfg: IconStepComponentViewConfiguration) => StepComponentViewFactory;
+
+interface IconStepExtensionConfiguration {
+    view: IconStepComponentViewConfiguration;
+}
+
 declare class CenteredViewportCalculator {
     static center(margin: number, canvasSize: Vector, rootComponentSize: Vector): Viewport;
     static focusOnComponent(canvasSize: Vector, viewport: Viewport, componentPosition: Vector, componentSize: Vector): Viewport;
@@ -1203,6 +1221,7 @@ interface StepsDesignerExtensionConfiguration {
     container?: ContainerStepExtensionConfiguration;
     switch?: SwitchStepExtensionConfiguration;
     task?: TaskStepExtensionConfiguration;
+    icon?: IconStepExtensionConfiguration;
 }
 declare class StepsDesignerExtension implements DesignerExtension {
     readonly steps: StepExtension<Step>[];
@@ -1210,4 +1229,4 @@ declare class StepsDesignerExtension implements DesignerExtension {
     protected constructor(steps: StepExtension<Step>[]);
 }
 
-export { Attributes, Badge, BadgeExtension, BadgeView, Badges, BadgesResult, BaseClickCommand, CenteredViewportCalculator, ClassicWheelControllerExtension, ClickCommand, ClickCommandType, ClickDetails, Component, ComponentContext, ComponentView, ContainerStepComponentViewConfiguration, ContainerStepExtensionConfiguration, ContextMenuExtension, ContextMenuItem, ContextMenuItemsProvider, ControlBarApi, CustomAction, CustomActionController, CustomActionHandler, CustomActionHandlerContext, Daemon, DaemonExtension, DefaultSequenceComponent, DefaultSequenceComponentView, DefaultViewportController, DefaultViewportControllerExtension, DefinitionChangeType, DefinitionChangedEvent, Designer, DesignerApi, DesignerConfiguration, DesignerContext, DesignerExtension, DesignerState, Dom, DraggedComponent, DraggedComponentExtension, Editor, EditorApi, EditorsConfiguration, Grid, GridExtension, Icons, InputView, JoinView, KeyboardAction, KeyboardConfiguration, LabelView, LineGridConfiguration, LineGridDesignerExtension, ObjectCloner, OpenFolderClickCommand, OutputView, PathBarApi, Placeholder, PlaceholderController, PlaceholderControllerExtension, PlaceholderDirection, PlaceholderExtension, PlaceholderView, QuantifiedScaleViewportCalculator, RectPlaceholder, RectPlaceholderConfiguration, RectPlaceholderView, RegionView, RerenderStepClickCommand, RootComponentExtension, RootEditorContext, RootEditorProvider, RootValidator, SelectStepClickCommand, SelectedStepIdProvider, SequenceComponent, SequenceComponentExtension, SequenceContext, SequencePlaceIndicator, Services, ServicesResolver, SimpleEvent, SimpleEventListener, StateModifierDependency, StepComponent, StepComponentView, StepComponentViewContext, StepComponentViewFactory, StepComponentViewWrapperExtension, StepContext, StepDefinition, StepDescriptionProvider, StepEditorContext, StepEditorProvider, StepExtension, StepExtensionResolver, StepIconUrlProvider, StepLabelProvider, StepValidator, StepsConfiguration, StepsDesignerExtension, StepsDesignerExtensionConfiguration, SwitchStepComponentViewConfiguration, SwitchStepExtensionConfiguration, TaskStepComponentViewConfiguration, TaskStepExtensionConfiguration, ToolboxApi, ToolboxConfiguration, ToolboxGroupConfiguration, TriggerCustomActionClickCommand, UiComponent, UiComponentExtension, Uid, UidGenerator, UndoStack, UndoStackItem, ValidationErrorBadgeExtension, ValidationErrorBadgeExtensionConfiguration, ValidationErrorBadgeViewConfiguration, ValidatorConfiguration, Vector, Viewport, ViewportController, ViewportControllerExtension, WheelController, WheelControllerExtension, WorkspaceApi, createContainerStepComponentViewFactory, createSwitchStepComponentViewFactory, createTaskStepComponentViewFactory, getAbsolutePosition, race };
+export { Attributes, Badge, BadgeExtension, BadgeView, Badges, BadgesResult, BaseClickCommand, CenteredViewportCalculator, ClassicWheelControllerExtension, ClickCommand, ClickCommandType, ClickDetails, Component, ComponentContext, ComponentView, ContainerStepComponentViewConfiguration, ContainerStepExtensionConfiguration, ContextMenuExtension, ContextMenuItem, ContextMenuItemsProvider, ControlBarApi, CustomAction, CustomActionController, CustomActionHandler, CustomActionHandlerContext, Daemon, DaemonExtension, DefaultSequenceComponent, DefaultSequenceComponentView, DefaultViewportController, DefaultViewportControllerExtension, DefinitionChangeType, DefinitionChangedEvent, Designer, DesignerApi, DesignerConfiguration, DesignerContext, DesignerExtension, DesignerState, Dom, DraggedComponent, DraggedComponentExtension, Editor, EditorApi, EditorsConfiguration, Grid, GridExtension, IconStepComponentViewConfiguration, IconStepExtensionConfiguration, Icons, InputView, JoinView, KeyboardAction, KeyboardConfiguration, LabelView, LineGridConfiguration, LineGridDesignerExtension, ObjectCloner, OpenFolderClickCommand, OutputView, PathBarApi, Placeholder, PlaceholderController, PlaceholderControllerExtension, PlaceholderDirection, PlaceholderExtension, PlaceholderView, QuantifiedScaleViewportCalculator, RectPlaceholder, RectPlaceholderConfiguration, RectPlaceholderView, RegionView, RerenderStepClickCommand, RootComponentExtension, RootEditorContext, RootEditorProvider, RootValidator, SelectStepClickCommand, SelectedStepIdProvider, SequenceComponent, SequenceComponentExtension, SequenceContext, SequencePlaceIndicator, Services, ServicesResolver, SimpleEvent, SimpleEventListener, StateModifierDependency, StepComponent, StepComponentView, StepComponentViewContext, StepComponentViewFactory, StepComponentViewWrapperExtension, StepContext, StepDefinition, StepDescriptionProvider, StepEditorContext, StepEditorProvider, StepExtension, StepExtensionResolver, StepIconUrlProvider, StepLabelProvider, StepValidator, StepsConfiguration, StepsDesignerExtension, StepsDesignerExtensionConfiguration, SwitchStepComponentViewConfiguration, SwitchStepExtensionConfiguration, TaskStepComponentViewConfiguration, TaskStepExtensionConfiguration, ToolboxApi, ToolboxConfiguration, ToolboxGroupConfiguration, TriggerCustomActionClickCommand, UiComponent, UiComponentExtension, Uid, UidGenerator, UndoStack, UndoStackItem, ValidationErrorBadgeExtension, ValidationErrorBadgeExtensionConfiguration, ValidationErrorBadgeViewConfiguration, ValidatorConfiguration, Vector, Viewport, ViewportController, ViewportControllerExtension, WheelController, WheelControllerExtension, WorkspaceApi, createContainerStepComponentViewFactory, createIconStepComponentViewFactory, createSwitchStepComponentViewFactory, createTaskStepComponentViewFactory, getAbsolutePosition, race };

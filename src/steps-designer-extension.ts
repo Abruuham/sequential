@@ -6,11 +6,14 @@ import { SwitchStepExtensionConfiguration } from './workspace/switch-step/switch
 import { SwitchStepExtension } from './workspace/switch-step/switch-step-extension';
 import { TaskStepExtensionConfiguration } from './workspace/task-step/task-step-extension-configuration';
 import { TaskStepExtension } from './workspace/task-step/task-step-extension';
+import { IconStepExtensionConfiguration } from './workspace/icon-step/icon-step-extension-configuration';
+import { IconStepExtension } from './workspace/icon-step/icon-step-extension';
 
 export interface StepsDesignerExtensionConfiguration {
 	container?: ContainerStepExtensionConfiguration;
 	switch?: SwitchStepExtensionConfiguration;
 	task?: TaskStepExtensionConfiguration;
+	icon?: IconStepExtensionConfiguration;
 }
 
 export class StepsDesignerExtension implements DesignerExtension {
@@ -24,6 +27,9 @@ export class StepsDesignerExtension implements DesignerExtension {
 		}
 		if (configuration.task) {
 			steps.push(TaskStepExtension.create(configuration.task));
+		}
+		if (configuration.icon){
+			steps.push(IconStepExtension.create(configuration.icon));
 		}
 		return new StepsDesignerExtension(steps);
 	}

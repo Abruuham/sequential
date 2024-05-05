@@ -5,6 +5,7 @@ export * from './container-step';
 export * from './grid';
 export * from './switch-step';
 export * from './task-step';
+export * from './icon-step';
 export * from './viewport';
 export * from './component';
 export * from './step-component';
