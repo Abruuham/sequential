@@ -653,6 +653,7 @@ interface IconStepComponentViewConfiguration {
     radius: number;
     inputSize: number;
     outputSize: number;
+    iconTaskSize: number;
 }
 
 declare const createIconStepComponentViewFactory: (isInterrupted: boolean, cfg: IconStepComponentViewConfiguration) => StepComponentViewFactory;

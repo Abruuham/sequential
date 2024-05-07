@@ -8,4 +8,5 @@ export interface IconStepComponentViewConfiguration {
 	radius: number;
 	inputSize: number;
 	outputSize: number;
+	iconTaskSize: number;
 }

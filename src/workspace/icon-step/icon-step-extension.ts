@@ -13,7 +13,8 @@ const defaultConfiguration: IconStepExtensionConfiguration = {
 		iconSize: 22,
 		radius: 5,
 		inputSize: 14,
-		outputSize: 10
+		outputSize: 10,
+        iconTaskSize: 26
 	}
 };
 

@@ -19,7 +19,7 @@ export const createIconStepComponentViewFactory =
         parentElement.appendChild(g);
 
         let cx, cy, r;
-        cx = cy = r = cfg.paddingY*2 + cfg.iconSize;
+        cx = cy = r = cfg.iconTaskSize;
 
         const circle = Dom.svg('circle', {
             class: 'sqd-step-icon-circle',
