@@ -5,16 +5,10 @@ import { IconStepExtensionConfiguration } from './icon-step-extension-configurat
 
 const defaultConfiguration: IconStepExtensionConfiguration = {
 	view: {
-		paddingLeft: 12,
-		paddingRight: 12,
-		paddingY: 10,
-		textMarginLeft: 12,
-		minTextWidth: 70,
-		iconSize: 22,
-		radius: 5,
-		inputSize: 14,
-		outputSize: 10,
-        iconTaskSize: 26
+        size: 52,
+        iconSize: 28,
+        inputSize: 14,
+        outputSize: 10
 	}
 };
 

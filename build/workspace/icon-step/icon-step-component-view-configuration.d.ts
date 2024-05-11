@@ -1,12 +1,6 @@
 export interface IconStepComponentViewConfiguration {
-    paddingLeft: number;
-    paddingRight: number;
-    paddingY: number;
-    textMarginLeft: number;
-    minTextWidth: number;
+    size: number;
     iconSize: number;
-    radius: number;
     inputSize: number;
     outputSize: number;
-    iconTaskSize: number;
 }
