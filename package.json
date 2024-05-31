@@ -79,7 +79,7 @@
 		"@abruuham/sequential-workflow-model": "https://github.com/Abruuham/sequential-workflow-model#main"
 	},
 	"peerDependencies": {
-		"@abruuham/equential-workflow-model": "https://github.com/Abruuham/sequential-workflow-model#main"
+		"@abruuham/sequential-workflow-model": "https://github.com/Abruuham/sequential-workflow-model#main"
 	},
 	"devDependencies": {
 		"@rollup/plugin-node-resolve": "^15.0.1",
