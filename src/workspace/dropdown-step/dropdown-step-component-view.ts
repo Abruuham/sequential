@@ -52,7 +52,7 @@ export const createDropDownStepComponentViewFactory =
 			dropdown.appendChild(opt);
 		});
 
-		g.insertBefore(text, dropdown);
+		g.appendChild(dropdown);
 
 		const iconUrl = viewContext.getStepIconUrl();
 		const icon = iconUrl
