@@ -8,7 +8,8 @@ describe('StepDuplicator', () => {
 		componentType: 'task',
 		id: '0x0',
 		name: 'Save',
-		properties: {}
+		properties: {},
+		items: []
 	};
 
 	const loopStep: SequentialStep = {
@@ -17,7 +18,8 @@ describe('StepDuplicator', () => {
 		id: '0x1',
 		name: 'Loop',
 		properties: {},
-		sequence: [saveStep]
+		sequence: [saveStep],
+		items: []
 	};
 
 	const ifStep: BranchedStep = {
@@ -29,7 +31,8 @@ describe('StepDuplicator', () => {
 		branches: {
 			true: [loopStep],
 			false: []
-		}
+		},
+		items: []
 	};
 
 	it('duplicates correctly', () => {

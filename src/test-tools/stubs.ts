@@ -33,7 +33,8 @@ export function createStepStub(): Step {
 		componentType: 'task',
 		name: 'stub',
 		properties: {},
-		type: 'stub'
+		type: 'stub',
+		items: []
 	};
 }
 

@@ -1,5 +1,5 @@
-import { Definition, Step, Sequence, ComponentType, DefinitionWalker, StepOrName } from 'sequential-workflow-model';
-export * from 'sequential-workflow-model';
+import { Definition, Step, Sequence, ComponentType, DefinitionWalker, StepOrName } from '@abruuham/sequential-workflow-model';
+export * from '@abruuham/sequential-workflow-model';
 
 declare class Icons {
     static folderIn: string;
@@ -1212,11 +1212,28 @@ declare class LineGridDesignerExtension implements DesignerExtension {
     private constructor();
 }
 
+interface DropDownStepComponentViewConfiguration {
+    paddingLeft: number;
+    paddingRight: number;
+    paddingY: number;
+    textMarginLeft: number;
+    minTextWidth: number;
+    iconSize: number;
+    radius: number;
+    inputSize: number;
+    outputSize: number;
+}
+
+interface DropDownStepExtensionConfiguration {
+    view: DropDownStepComponentViewConfiguration;
+}
+
 interface StepsDesignerExtensionConfiguration {
     container?: ContainerStepExtensionConfiguration;
     switch?: SwitchStepExtensionConfiguration;
     task?: TaskStepExtensionConfiguration;
     icon?: IconStepExtensionConfiguration;
+    dropdown?: DropDownStepExtensionConfiguration;
 }
 declare class StepsDesignerExtension implements DesignerExtension {
     readonly steps: StepExtension<Step>[];

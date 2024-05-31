@@ -18,7 +18,8 @@ describe('SwitchStepComponentView', () => {
 			componentType: 'switch',
 			name: 'x',
 			properties: {},
-			type: 'test'
+			type: 'test',
+			items: []
 		};
 		const stepContext: StepContext<BranchedStep> = {
 			depth: 0,

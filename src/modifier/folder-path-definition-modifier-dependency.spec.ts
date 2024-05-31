@@ -9,7 +9,8 @@ function createFolderStep(id: string, sequence: Sequence): SequentialStep {
 		name: 'test',
 		properties: {},
 		type: 'folder',
-		sequence
+		sequence,
+		items: []
 	};
 }
 

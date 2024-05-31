@@ -1117,7 +1117,7 @@
 	    }
 	}
 
-	const defaultConfiguration$6 = {
+	const defaultConfiguration$7 = {
 	    view: {
 	        size: 22,
 	        iconSize: 12
@@ -1125,7 +1125,7 @@
 	};
 	class ValidationErrorBadgeExtension {
 	    static create(configuration) {
-	        return new ValidationErrorBadgeExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$6);
+	        return new ValidationErrorBadgeExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$7);
 	    }
 	    constructor(configuration) {
 	        this.configuration = configuration;
@@ -4129,7 +4129,7 @@
 	    }
 	}
 
-	const defaultConfiguration$5 = {
+	const defaultConfiguration$6 = {
 	    view: {
 	        paddingTop: 20,
 	        paddingX: 20,
@@ -4145,7 +4145,7 @@
 	};
 	class ContainerStepExtension {
 	    static create(configuration) {
-	        return new ContainerStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$5);
+	        return new ContainerStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$6);
 	    }
 	    constructor(configuration) {
 	        this.configuration = configuration;
@@ -4162,7 +4162,7 @@
 	    }
 	}
 
-	const defaultConfiguration$4 = {
+	const defaultConfiguration$5 = {
 	    gapWidth: 100,
 	    gapHeight: 24,
 	    radius: 6,
@@ -4170,7 +4170,7 @@
 	};
 	class RectPlaceholderExtension {
 	    static create(configuration) {
-	        return new RectPlaceholderExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$4);
+	        return new RectPlaceholderExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$5);
 	    }
 	    constructor(configuration) {
 	        this.configuration = configuration;
@@ -4293,7 +4293,7 @@
 	    }
 	}
 
-	const defaultConfiguration$3 = {
+	const defaultConfiguration$4 = {
 	    view: {
 	        minContainerWidth: 40,
 	        paddingX: 20,
@@ -4317,7 +4317,7 @@
 	};
 	class SwitchStepExtension {
 	    static create(configuration) {
-	        return new SwitchStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$3);
+	        return new SwitchStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$4);
 	    }
 	    constructor(configuration) {
 	        this.configuration = configuration;
@@ -4326,7 +4326,7 @@
 	    }
 	}
 
-	const defaultConfiguration$2 = {
+	const defaultConfiguration$3 = {
 	    view: {
 	        paddingLeft: 12,
 	        paddingRight: 12,
@@ -4341,7 +4341,7 @@
 	};
 	class TaskStepExtension {
 	    static create(configuration) {
-	        return new TaskStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$2);
+	        return new TaskStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$3);
 	    }
 	    constructor(configuration) {
 	        this.configuration = configuration;
@@ -4383,13 +4383,13 @@
 	    }
 	}
 
-	const defaultConfiguration$1 = {
+	const defaultConfiguration$2 = {
 	    gridSizeX: 68,
 	    gridSizeY: 68
 	};
 	class LineGridExtension {
 	    static create(configuration) {
-	        return new LineGridExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$1);
+	        return new LineGridExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$2);
 	    }
 	    constructor(configuration) {
 	        this.configuration = configuration;
@@ -4400,7 +4400,7 @@
 	    }
 	}
 
-	const defaultConfiguration = {
+	const defaultConfiguration$1 = {
 	    view: {
 	        size: 52,
 	        iconSize: 28,
@@ -4410,12 +4410,122 @@
 	};
 	class IconStepExtension {
 	    static create(configuration) {
-	        return new IconStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration);
+	        return new IconStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration$1);
 	    }
 	    constructor(configuration) {
 	        this.configuration = configuration;
 	        this.componentType = 'icon';
 	        this.createComponentView = createIconStepComponentViewFactory(false, this.configuration.view);
+	    }
+	}
+
+	const createDropDownStepComponentViewFactory = (isInterrupted, cfg) => (parentElement, stepContext, viewContext) => {
+	    const { step } = stepContext;
+	    const g = Dom.svg('g', {
+	        class: `sqd-step-dropdown sqd-type-${step.type}`
+	    });
+	    parentElement.appendChild(g);
+	    const boxHeight = cfg.paddingY * 2 + cfg.iconSize;
+	    const text = Dom.svg('text', {
+	        x: cfg.paddingLeft + cfg.iconSize + cfg.textMarginLeft,
+	        y: boxHeight / 2,
+	        class: 'sqd-step-dropdown-text'
+	    });
+	    text.textContent = step.name;
+	    g.appendChild(text);
+	    const textWidth = Math.max(text.getBBox().width, cfg.minTextWidth);
+	    const boxWidth = cfg.iconSize + cfg.paddingLeft + cfg.paddingRight + cfg.textMarginLeft + textWidth;
+	    const rect = Dom.svg('rect', {
+	        x: 0.5,
+	        y: 0.5,
+	        class: 'sqd-step-dropdown-rect',
+	        width: boxWidth,
+	        height: boxHeight,
+	        rx: cfg.radius,
+	        ry: cfg.radius
+	    });
+	    g.insertBefore(rect, text);
+	    // create the dropdown element
+	    const dropdown = document.createElement('select');
+	    // add options to the dropdown
+	    const options = step.items;
+	    options.forEach(option => {
+	        const opt = document.createElement('option');
+	        opt.textContent = option;
+	        dropdown.appendChild(opt);
+	    });
+	    g.insertBefore(text, dropdown);
+	    const iconUrl = viewContext.getStepIconUrl();
+	    const icon = iconUrl
+	        ? Dom.svg('image', {
+	            href: iconUrl
+	        })
+	        : Dom.svg('rect', {
+	            class: 'sqd-step-dropdown-empty-icon',
+	            rx: cfg.radius,
+	            ry: cfg.radius
+	        });
+	    Dom.attrs(icon, {
+	        x: cfg.paddingLeft,
+	        y: cfg.paddingY,
+	        width: cfg.iconSize,
+	        height: cfg.iconSize
+	    });
+	    g.appendChild(icon);
+	    const isInputViewHidden = stepContext.depth === 0 && stepContext.position === 0 && !stepContext.isInputConnected;
+	    const isOutputViewHidden = isInterrupted;
+	    const inputView = isInputViewHidden ? null : InputView.createRoundInput(g, boxWidth / 2, 0, cfg.inputSize);
+	    const outputView = isOutputViewHidden ? null : OutputView.create(g, boxWidth / 2, boxHeight, cfg.outputSize);
+	    return {
+	        g,
+	        width: boxWidth,
+	        height: boxHeight,
+	        joinX: boxWidth / 2,
+	        sequenceComponents: null,
+	        placeholders: null,
+	        hasOutput() {
+	            return !!outputView;
+	        },
+	        getClientPosition() {
+	            return getAbsolutePosition(rect);
+	        },
+	        resolveClick(click) {
+	            return g.contains(click.element) ? true : null;
+	        },
+	        setIsDragging(isDragging) {
+	            inputView === null || inputView === void 0 ? void 0 : inputView.setIsHidden(isDragging);
+	            outputView === null || outputView === void 0 ? void 0 : outputView.setIsHidden(isDragging);
+	        },
+	        setIsDisabled(isDisabled) {
+	            Dom.toggleClass(g, isDisabled, 'sqd-disabled');
+	        },
+	        setIsSelected(isSelected) {
+	            Dom.toggleClass(rect, isSelected, 'sqd-selected');
+	        }
+	    };
+	};
+
+	const defaultConfiguration = {
+	    view: {
+	        paddingLeft: 12,
+	        paddingRight: 12,
+	        paddingY: 10,
+	        textMarginLeft: 12,
+	        minTextWidth: 70,
+	        iconSize: 22,
+	        radius: 5,
+	        inputSize: 14,
+	        outputSize: 10
+	    }
+	};
+	class DropDownStepExtension {
+	    static create(configuration) {
+	        return new DropDownStepExtension(configuration !== null && configuration !== void 0 ? configuration : defaultConfiguration);
+	    }
+	    constructor(configuration) {
+	        this.configuration = configuration;
+	        this.componentType = 'dropdown';
+	        this.createComponentView = createDropDownStepComponentViewFactory(false, this.configuration.view);
 	    }
 	}
 
@@ -4481,6 +4591,7 @@
 	    services.steps.push(SwitchStepExtension.create());
 	    services.steps.push(TaskStepExtension.create());
 	    services.steps.push(IconStepExtension.create());
+	    services.steps.push(DropDownStepExtension.create());
 	    if (!services.stepComponentViewWrapper) {
 	        services.stepComponentViewWrapper = new DefaultStepComponentViewWrapperExtension();
 	    }
@@ -4787,6 +4898,9 @@
 	        }
 	        if (configuration.icon) {
 	            steps.push(IconStepExtension.create(configuration.icon));
+	        }
+	        if (configuration.dropdown) {
+	            steps.push(DropDownStepExtension.create(configuration.dropdown));
 	        }
 	        return new StepsDesignerExtension(steps);
 	    }

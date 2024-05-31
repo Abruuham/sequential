@@ -12,7 +12,8 @@ describe('ToolboxItem', () => {
 			componentType: 'task',
 			name: 'Send email',
 			properties: {},
-			type: 'sendEmail'
+			type: 'sendEmail',
+			items: []
 		};
 		const data: ToolboxItemData = {
 			iconUrl: null,

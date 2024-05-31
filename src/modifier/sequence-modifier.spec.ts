@@ -7,28 +7,32 @@ describe('SequenceModifier', () => {
 		name: 'A',
 		componentType: 'task',
 		type: 'a',
-		properties: {}
+		properties: {},
+		items: []
 	};
 	const B: Step = {
 		id: '0x2',
 		name: 'B',
 		componentType: 'task',
 		type: 'b',
-		properties: {}
+		properties: {},
+		items: []
 	};
 	const C: Step = {
 		id: '0x3',
 		name: 'C',
 		componentType: 'task',
 		type: 'c',
-		properties: {}
+		properties: {},
+		items: []
 	};
 	const D: Step = {
 		id: '0x4',
 		name: 'D',
 		componentType: 'task',
 		type: 'd',
-		properties: {}
+		properties: {},
+		items: []
 	};
 
 	let seq: Sequence;

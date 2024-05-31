@@ -3,14 +3,14 @@ import { Step } from '../../definition';
 import { StepContext } from '../../designer-extension';
 import { createComponentContextStub } from '../../test-tools/stubs';
 import { StepComponentViewContextFactory } from '../step-component-view-context-factory';
-import { createTaskStepComponentViewFactory } from './task-step-component-view';
+import { createDropDownStepComponentViewFactory } from './dropdown-step-component-view';
 
-describe('TaskStepComponentView', () => {
+describe('DropDownStepComponentView', () => {
 	it('create() creates view', () => {
 		const parent = Dom.svg('svg');
 		const step: Step = {
 			id: '0x',
-			componentType: 'task',
+			componentType: 'dropdown',
 			name: 'x',
 			properties: {},
 			type: 'test',
@@ -27,7 +27,7 @@ describe('TaskStepComponentView', () => {
 		const componentContext = createComponentContextStub();
 		const viewContext = StepComponentViewContextFactory.create(stepContext, componentContext);
 
-		const factory = createTaskStepComponentViewFactory(false, {
+		const factory = createDropDownStepComponentViewFactory(false, {
 			iconSize: 20,
 			minTextWidth: 50,
 			textMarginLeft: 10,

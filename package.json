@@ -76,10 +76,10 @@
 		"prettier:fix": "prettier --write ./src ./sass"
 	},
 	"dependencies": {
-		"sequential-workflow-model": "^0.2.0"
+		"@abruuham/sequential-workflow-model": "https://github.com/Abruuham/sequential-workflow-model#main"
 	},
 	"peerDependencies": {
-		"sequential-workflow-model": "^0.2.0"
+		"@abruuham/equential-workflow-model": "https://github.com/Abruuham/sequential-workflow-model#main"
 	},
 	"devDependencies": {
 		"@rollup/plugin-node-resolve": "^15.0.1",

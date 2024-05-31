@@ -11,13 +11,15 @@ describe('ToolboxDataProvider', () => {
 		componentType: 'task',
 		name: 'Send email',
 		properties: {},
-		type: 'sendEmail'
+		type: 'sendEmail',
+		items: []
 	};
 	const writeFileStep = {
 		componentType: 'task',
 		name: 'Write file',
 		properties: {},
-		type: 'writeFile'
+		type: 'writeFile',
+		items: []
 	};
 	const groups = [
 		{

@@ -8,7 +8,8 @@ const step: Step = {
 	id: '0x1',
 	name: 'Foo',
 	properties: {},
-	type: 'bar'
+	type: 'bar',
+	items: []
 };
 
 const definition: Definition = {

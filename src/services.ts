@@ -19,6 +19,7 @@ import { DefaultSequenceComponentExtension } from './workspace/sequence/default-
 import { DefaultStepComponentViewWrapperExtension } from './workspace/default-step-component-view-wrapper-extension';
 import { LineGridExtension } from './workspace/grid/line-grid-extension';
 import { IconStepExtension } from './workspace/icon-step/icon-step-extension';
+import { DropDownStepExtension } from './workspace/dropdown-step/dropdown-step-extension';
 
 export type Services = Required<DesignerExtension>;
 
@@ -86,6 +87,7 @@ function setDefaults(services: Partial<Services>, configuration: DesignerConfigu
 	services.steps.push(SwitchStepExtension.create());
 	services.steps.push(TaskStepExtension.create());
 	services.steps.push(IconStepExtension.create());
+	services.steps.push(DropDownStepExtension.create());
 
 	if (!services.stepComponentViewWrapper) {
 		services.stepComponentViewWrapper = new DefaultStepComponentViewWrapperExtension();

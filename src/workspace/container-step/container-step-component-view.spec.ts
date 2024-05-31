@@ -13,7 +13,8 @@ describe('ContainerStepComponentView', () => {
 			name: 'Foo',
 			properties: {},
 			sequence: [],
-			type: 'foo'
+			type: 'foo',
+			items: []
 		};
 
 		const parent = Dom.svg('svg');

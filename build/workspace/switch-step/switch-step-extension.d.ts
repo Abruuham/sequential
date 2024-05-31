@@ -6,5 +6,5 @@ export declare class SwitchStepExtension implements StepExtension<BranchedStep> 
     static create(configuration?: SwitchStepExtensionConfiguration): SwitchStepExtension;
     readonly componentType = "switch";
     private constructor();
-    readonly createComponentView: (parentElement: SVGElement, stepContext: import("../../designer-extension").StepContext<import("sequential-workflow-model").Step>, viewContext: import("../../designer-extension").StepComponentViewContext) => import("..").StepComponentView;
+    readonly createComponentView: (parentElement: SVGElement, stepContext: import("../../designer-extension").StepContext<import("@abruuham/sequential-workflow-model").Step>, viewContext: import("../../designer-extension").StepComponentViewContext) => import("..").StepComponentView;
 }

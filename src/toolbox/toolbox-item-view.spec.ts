@@ -11,7 +11,8 @@ describe('ToolboxItemView', () => {
 			componentType: 'task',
 			name: 'x',
 			properties: {},
-			type: 'y'
+			type: 'y',
+			items: []
 		};
 		const data: ToolboxItemData = {
 			iconUrl: null,

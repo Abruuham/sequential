@@ -8,12 +8,15 @@ import { TaskStepExtensionConfiguration } from './workspace/task-step/task-step-
 import { TaskStepExtension } from './workspace/task-step/task-step-extension';
 import { IconStepExtensionConfiguration } from './workspace/icon-step/icon-step-extension-configuration';
 import { IconStepExtension } from './workspace/icon-step/icon-step-extension';
+import { DropDownStepExtensionConfiguration } from './workspace/dropdown-step';
+import { DropDownStepExtension } from './workspace/dropdown-step/dropdown-step-extension';
 
 export interface StepsDesignerExtensionConfiguration {
 	container?: ContainerStepExtensionConfiguration;
 	switch?: SwitchStepExtensionConfiguration;
 	task?: TaskStepExtensionConfiguration;
 	icon?: IconStepExtensionConfiguration;
+	dropdown?: DropDownStepExtensionConfiguration;
 }
 
 export class StepsDesignerExtension implements DesignerExtension {
@@ -30,6 +33,9 @@ export class StepsDesignerExtension implements DesignerExtension {
 		}
 		if (configuration.icon){
 			steps.push(IconStepExtension.create(configuration.icon));
+		}
+		if (configuration.dropdown) {
+			steps.push(DropDownStepExtension.create(configuration.dropdown));
 		}
 		return new StepsDesignerExtension(steps);
 	}

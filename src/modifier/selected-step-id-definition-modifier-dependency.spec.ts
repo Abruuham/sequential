@@ -12,7 +12,8 @@ describe('SelectedStepIdDefinitionModifierDependency', () => {
 				componentType: 'task',
 				type: 'test',
 				name: 'test',
-				properties: {}
+				properties: {},
+				items: []
 			}
 		]
 	};

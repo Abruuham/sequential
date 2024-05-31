@@ -1,1 +1,1 @@
-export * from 'sequential-workflow-model';
+export * from '@abruuham/sequential-workflow-model';
