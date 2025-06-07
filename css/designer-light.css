@@ -152,6 +152,20 @@
   stroke: #ed4800;
   stroke-width: 2;
 }
+
+.sqd-theme-light .sqd-step-icon .sqd-step-icon-circle {
+  fill: ##3a80e5;
+  stroke-width: 1;
+  stroke: #42435d;
+  filter: drop-shadow(0 1.5px 1.5px rgba(0, 0, 0, 0.15));
+}
+.sqd-theme-light .sqd-step-icon .sqd-step-icon-circle.sqd-selected {
+  stroke: #ed4800;
+  stroke-width: 2;
+}
+
+
+
 .sqd-theme-light .sqd-step-task .sqd-step-task-text {
   fill: #000;
 }
